@@ -124,10 +124,14 @@
     </Compile>
     <Compile Include="Models\AlgorithmicAlgebraObject.cs" />
     <Compile Include="Models\Operation.cs" />
-    <Compile Include="Models\Parallel.cs" />
-    <Compile Include="Models\Sequence.cs" />
+    <Compile Include="Models\ParallelOperaton.cs" />
+    <Compile Include="Models\SequenceOperation.cs" />
     <Compile Include="Models\Uniterm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DrawViewModel.cs" />
+    <Compile Include="Views\DrawPage.xaml.cs">
+      <DependentUpon>DrawPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -153,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\DrawPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
@@ -162,8 +170,6 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
