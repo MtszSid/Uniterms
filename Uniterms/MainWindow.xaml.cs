@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Uniterms.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT.Interop;
@@ -64,7 +65,7 @@ namespace Uniterms
         {
             SetTitleBar(AppTitleBar);
             // TODO Raname MainPage in case your app Main Page has a different name
-            PageFrame.Navigate(typeof(MainPage));
+            PageFrame.Navigate(typeof(DrawPage));
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
                 SetDragRegionForCustomTitleBar(m_AppWindow);

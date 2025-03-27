@@ -13,7 +13,30 @@
         <viewmodel:DrawViewModel x:Name="viewModelInDataContext"/>
     </Page.DataContext>
 
-    <Grid>
-        
-    </Grid>
+    <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+           IsPaneOpen="True" OpenPaneLength="400" CompactPaneLength="48" DisplayMode="Inline">
+        <SplitView.Pane>
+            <Grid Margin="36,12,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Unitermy" x:Name="PaneHeader" Style="{StaticResource BaseTextBlockStyle}"/>
+                <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,24,0,0">
+                    <Button Content="Button" Click="ShowDialog_Click" Margin="0,0,0,0"/>
+                    <TextBlock Text="(Brak)" Margin="0,16,0,0" Name="ParallelText"/>
+                </StackPanel>
+            </Grid>
+        </SplitView.Pane>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+            <TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" />
+        </Grid>
+    </SplitView>
 </Page>

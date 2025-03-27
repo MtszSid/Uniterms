@@ -19,5 +19,11 @@ namespace Uniterms.Models
             Left = left;
             Right = right;
         }
+
+        public ParallelOperation(ParallelOperation parallel)
+        {
+            Left = parallel.Left;
+            Right = parallel.Right;
+        }
     }
 }

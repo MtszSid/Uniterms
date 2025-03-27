@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,6 +30,28 @@ namespace Uniterms.Views
         {
             _viewModel= new DrawViewModel();
             this.InitializeComponent();
+        }
+
+        private async void ShowDialog_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDialog dialog = new ContentDialog();
+
+            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            dialog.XamlRoot = this.XamlRoot;
+            //dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.Title = "Dodaj operację zrównoleglania.";
+            dialog.PrimaryButtonText = "Dodaj";
+            dialog.CloseButtonText = "Anuluj";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            var content = new ParallelOperationContent();
+            dialog.Content = content;
+
+            var result = await dialog.ShowAsync();
+
+            if (result is ContentDialogResult.Primary)
+            {
+                ParallelText.Text = content.Left + " ; " + content.Right;
+            }
         }
     }
 }

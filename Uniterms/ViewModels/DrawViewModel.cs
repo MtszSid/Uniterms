@@ -26,7 +26,28 @@ namespace Uniterms.ViewModels
 
             } 
         }
-        public ParallelOperation Parallel { get => _parallel; set => SetProperty(ref _parallel, value);}
+        public ParallelOperation Parallel
+        {
+            get => _parallel;
+            set
+            {
+                SetProperty(ref _parallel, value);
+                _mementoParallel = new ParallelOperation(_parallel);
+            }
+        }
+
+        public SequenceOperation MementoSequence
+        {
+            get => _mementoSequence;
+            set => SetProperty(ref _mementoSequence, value);
+        }
+
+        public ParallelOperation MementoParallel
+        {
+            get => _mementoParallel;
+            set => SetProperty(ref _mementoParallel, value);
+        }
+
 
         public void SetLeftOfParallel()
         {
@@ -37,7 +58,24 @@ namespace Uniterms.ViewModels
             }
             if(Parallel.Left is Uniterm)
             {
-                
+                Parallel.Left = _sequence;
+                Parallel.Right = _mementoParallel.Right;
+                OnPropertyChanged(nameof(Parallel));
+            }
+        }
+
+        public void SetRightOfParallel()
+        {
+
+            if (Parallel is null)
+            {
+                return;
+            }
+            if (Parallel.Left is Uniterm)
+            {
+                Parallel.Left = _mementoParallel.Left;
+                Parallel.Right = _mementoParallel.Right;
+                OnPropertyChanged(nameof(Parallel));
             }
         }
 
