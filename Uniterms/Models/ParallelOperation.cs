@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Uniterms.Models
 {
-    public class ParallelOperaton : Operation
+    public class ParallelOperation : Operation
     {
         private AlgorithmicAlgebraObject _left;
         private AlgorithmicAlgebraObject _right;
@@ -14,7 +14,7 @@ namespace Uniterms.Models
         public override AlgorithmicAlgebraObject Left { get => _left; set => _left = value; }
         public override AlgorithmicAlgebraObject Right { get => _right; set => _right = value; }
 
-        public ParallelOperaton(AlgorithmicAlgebraObject left, AlgorithmicAlgebraObject right)
+        public ParallelOperation(AlgorithmicAlgebraObject left, AlgorithmicAlgebraObject right)
         {
             Left = left;
             Right = right;

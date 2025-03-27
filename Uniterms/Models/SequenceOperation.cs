@@ -19,5 +19,11 @@ namespace Uniterms.Models
             Left = left;
             Right = right;
         }
+
+        public SequenceOperation(SequenceOperation other)
+        {
+            Left = other.Left;
+            Right = other.Right;
+        }
     }
 }

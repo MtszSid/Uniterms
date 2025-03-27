@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Uniterms (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Uniterms (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
