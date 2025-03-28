@@ -79,14 +79,14 @@ namespace Uniterms.ViewModels
             }
         }
 
-        public void NewParallel(string left, string right)
+        public void NewParallel(string left, string right, string separator)
         {
-            Parallel = new ParallelOperation(new Uniterm(left), new Uniterm(right));
+            Parallel = new ParallelOperation(new Uniterm(left), new Uniterm(right), separator);
         }
 
-        public void NewSequence(string left, string right)
+        public void NewSequence(string left, string right, string separator)
         {
-            Sequence = new SequenceOperation(new Uniterm(left), new Uniterm(right));
+            Sequence = new SequenceOperation(new Uniterm(left), new Uniterm(right), separator);
         }
     }
 }

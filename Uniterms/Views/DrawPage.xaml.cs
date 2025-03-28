@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Threading.Tasks;
+using Uniterms.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,7 +33,20 @@ namespace Uniterms.Views
             this.InitializeComponent();
         }
 
-        private async void ShowDialog_Click(object sender, RoutedEventArgs e)
+        private async void AddParallelOperation_Click(object sender, RoutedEventArgs e)
+        {
+            var content = new ParallelOperationContent();
+
+            var result = await NewDalog("Dodaj operację zrównoleglania.", content);
+            
+            if (result is ContentDialogResult.Primary)
+            {
+                ParallelText.Text = content.Left + content.Separator + content.Right;
+                _viewModel.NewParallel(content.Left, content.Right, content.Separator);
+            }
+        }
+
+        private async Task<ContentDialogResult> NewDalog(string title, object content)
         {
             ContentDialog dialog = new ContentDialog();
 
@@ -43,15 +57,9 @@ namespace Uniterms.Views
             dialog.PrimaryButtonText = "Dodaj";
             dialog.CloseButtonText = "Anuluj";
             dialog.DefaultButton = ContentDialogButton.Primary;
-            var content = new ParallelOperationContent();
             dialog.Content = content;
 
-            var result = await dialog.ShowAsync();
-
-            if (result is ContentDialogResult.Primary)
-            {
-                ParallelText.Text = content.Left + " ; " + content.Right;
-            }
+            return await dialog.ShowAsync();
         }
     }
 }

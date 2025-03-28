@@ -10,5 +10,6 @@ namespace Uniterms.Models
     {
         public abstract AlgorithmicAlgebraObject Left { get; set; }
         public abstract AlgorithmicAlgebraObject Right { get; set; }
+        public abstract string Separator { get; set; }
     }
 }

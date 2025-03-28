@@ -34,9 +34,22 @@ namespace Uniterms.Views
             get => RightUniterm.Text;
         }
 
+        public string Separator
+        {
+            get => SeparatorToggleButton.Content.ToString();
+        }
+
         public ParallelOperationContent()
         {
             this.InitializeComponent();
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SeparatorToggleButton.Content.ToString().Equals(";"))
+                SeparatorToggleButton.Content = ",";
+            else
+                SeparatorToggleButton.Content = ";";
         }
     }
 }

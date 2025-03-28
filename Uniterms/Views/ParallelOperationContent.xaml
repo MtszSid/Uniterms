@@ -9,10 +9,18 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" >
+        <TextBlock Text="Wprowadź unitermy dla poziomej operacji zrównoleglania." Margin="0,0,0,24"/>
         <!-- Content body -->
-        <TextBox Text="" Name="LeftUniterm" />
-        <TextBox Text="" Name="RightUniterm"/>
+        <TextBlock Text="Lewy uniterm:" Margin="0,0,0,16" />
+        <TextBox Text="" Name="LeftUniterm"  Margin="0,0,0,16"/>
+        <TextBlock Text="Prawy uniterm:" Margin="0,0,0,16" />
+        <TextBox Text="" Name="RightUniterm" Margin="0,0,0,16"/>
+        <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Orientation="Horizontal" Margin="0,0,0,16" >
+            <TextBlock Text="Separator:" Margin="0,0,24,0" VerticalAlignment="Center"/>
+            <ToggleButton Content=";" Click="ToggleButton_Click" Name="SeparatorToggleButton" MinWidth="52"/>
+        </StackPanel>
     </StackPanel>
 
 </Page>
