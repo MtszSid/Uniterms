@@ -23,6 +23,9 @@ namespace Uniterms.Views
         private static readonly double verticalOffset = 8;
         private static readonly double margin = 1;
 
+        private int _strokeThickness = 2;
+        private int _fontSize = 14;
+
         public static readonly DependencyProperty UnitermsProperty =
             DependencyProperty.Register(
                 nameof(AlgebraicOperation),
@@ -72,6 +75,13 @@ namespace Uniterms.Views
                     y);
             }
 
+            if (operation is SequenceOperation)
+            {
+                DrawSequenceLine(
+                    x,
+                    left.Item1 + separator.Item1 + right.Item1 + x + 2 * horizontalOffset,
+                    y);
+            }
 
             return (left.Item1 + separator.Item1 + right.Item1 + 2 * verticalOffset, Math.Max(left.Item2, right.Item2) + verticalOffset);
 
@@ -83,9 +93,9 @@ namespace Uniterms.Views
             var textBlock = new TextBlock
             {
                 Text = uniterm,
-                FontSize = 8,
+                FontSize = _fontSize,
                 Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
-                Margin = new Thickness(2,0,2,0)
+                Margin = new Thickness(2, 0, 2, 0)
             };
 
             Canvas.SetLeft(textBlock, x);
@@ -111,7 +121,7 @@ namespace Uniterms.Views
                 X2 = x2,
                 Y2 = y,
                 Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
-                StrokeThickness = 1
+                StrokeThickness = _strokeThickness
             };
 
             var line1 = new Line
@@ -121,7 +131,7 @@ namespace Uniterms.Views
                 X2 = x1,
                 Y2 = y + verticalOffset,
                 Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
-                StrokeThickness = 1
+                StrokeThickness = _strokeThickness
             };
 
             var line2 = new Line
@@ -131,12 +141,43 @@ namespace Uniterms.Views
                 X2 = x2,
                 Y2 = y + verticalOffset,
                 Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
-                StrokeThickness = 1
+                StrokeThickness = _strokeThickness
             };
 
             Container.Children.Add(line);
             Container.Children.Add(line1);
             Container.Children.Add(line2);
+        }
+
+        private void DrawSequenceLine(double x1, double x2, double y)
+        {
+            var line = new Path
+            {
+                Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
+                StrokeThickness = _strokeThickness
+            };
+            var pathGeometry = new PathGeometry();
+            PathFigure pathFigure = new PathFigure
+            {
+                StartPoint = new Windows.Foundation.Point(x1, y + verticalOffset) 
+            };
+
+            var delta = (x2 - x1) / 3;
+            var delta2 = (double)Math.Sqrt(x2-x1) + 2;
+
+            BezierSegment bezierSegment = new BezierSegment
+            {
+                Point1 = new Windows.Foundation.Point(x1 + delta, y - delta2), 
+                Point2 = new Windows.Foundation.Point(x2 - delta, y - delta2), 
+                Point3 = new Windows.Foundation.Point(x2, y + verticalOffset)  
+            };
+
+            pathFigure.Segments.Add(bezierSegment);
+            pathGeometry.Figures.Add(pathFigure);
+
+            line.Data = pathGeometry;
+            
+            Container.Children.Add(line);
         }
     }
 }

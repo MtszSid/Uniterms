@@ -29,7 +29,7 @@ namespace Uniterms.Views
         {
             ViewModel = new DrawViewModel();
             this.InitializeComponent();
-            ViewModel.Parallel = new ParallelOperation(new ParallelOperation(new Uniterm("A"), new Uniterm("B"), ";"), new Uniterm("B"), ",");
+            ViewModel.Parallel = new ParallelOperation(new SequenceOperation(new Uniterm("A"), new Uniterm("B"), ";"), new Uniterm("B"), ",");
 
         }
 
