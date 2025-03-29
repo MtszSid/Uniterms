@@ -25,12 +25,12 @@ namespace Uniterms.Views
     /// </summary>
     public sealed partial class DrawPage : Page
     {
-        private DrawViewModel _viewModel;
-
         public DrawPage()
         {
-            _viewModel= new DrawViewModel();
+            ViewModel = new DrawViewModel();
             this.InitializeComponent();
+            ViewModel.Parallel = new ParallelOperation(new ParallelOperation(new Uniterm("A"), new Uniterm("B"), ";"), new Uniterm("B"), ",");
+
         }
 
         private async void AddParallelOperation_Click(object sender, RoutedEventArgs e)
@@ -38,11 +38,10 @@ namespace Uniterms.Views
             var content = new ParallelOperationContent();
 
             var result = await NewDalog("Dodaj operację zrównoleglania.", content);
-            
+
             if (result is ContentDialogResult.Primary)
             {
-                ParallelText.Text = content.Left + content.Separator + content.Right;
-                _viewModel.NewParallel(content.Left, content.Right, content.Separator);
+                ViewModel.NewParallel(content.Left, content.Right, content.Separator);
             }
         }
 

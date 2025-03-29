@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Uniterms.Models;
+using Uniterms.Views;
 using Windows.Services.Maps;
 
 namespace Uniterms.ViewModels
@@ -22,7 +24,7 @@ namespace Uniterms.ViewModels
             get => _sequence;  
             set { 
                 SetProperty(ref _sequence, value);
-                _mementoSequence = new SequenceOperation(_sequence);
+                MementoSequence = new SequenceOperation(_sequence);
 
             } 
         }
@@ -32,7 +34,7 @@ namespace Uniterms.ViewModels
             set
             {
                 SetProperty(ref _parallel, value);
-                _mementoParallel = new ParallelOperation(_parallel);
+                MementoParallel = new ParallelOperation(_parallel);
             }
         }
 
@@ -47,6 +49,13 @@ namespace Uniterms.ViewModels
             get => _mementoParallel;
             set => SetProperty(ref _mementoParallel, value);
         }
+
+        //public static readonly DependencyProperty ParallelProperty =
+        //    DependencyProperty.Register(
+        //        nameof(Parallel),
+        //        typeof(ParallelOperation),
+        //        typeof(DrawViewModel),
+        //        new PropertyMetadata(null, OnOperationChanged));
 
 
         public void SetLeftOfParallel()

@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     >
     <Page.DataContext>
-        <viewmodel:DrawViewModel x:Name="viewModelInDataContext"/>
+        <viewmodel:DrawViewModel x:Name="ViewModel"/>
     </Page.DataContext>
 
     <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
@@ -25,18 +25,21 @@
                 <TextBlock Grid.Row="0" Text="Unitermy" x:Name="PaneHeader" Style="{StaticResource BaseTextBlockStyle}"/>
                 <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,24,0,0">
                     <Button Content="Button" Click="AddParallelOperation_Click" Margin="0,0,0,0"/>
-                    <TextBlock Text="(Brak)" Margin="0,16,0,0" Name="ParallelText"/>
+                    <TextBlock Text="{Binding Parallel.Name}" Margin="0,16,0,0" Name="ParallelText"/>
+                    
                 </StackPanel>
             </Grid>
         </SplitView.Pane>
-
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-            <TextBlock x:Name="content" Grid.Row="1" Margin="12,12,0,0" Style="{StaticResource BodyTextBlockStyle}" />
+            <TextBlock Grid.Row="0" Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+            <local:DrawOperation Grid.Row="1" Name="OperationDraw" AlgebraicOperation="{Binding Parallel}"/>
+            <local:DrawOperation Grid.Row="2" Name="OperationDraw2" AlgebraicOperation="{Binding Parallel}"/>
         </Grid>
     </SplitView>
 </Page>

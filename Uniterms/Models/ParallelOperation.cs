@@ -15,6 +15,8 @@ namespace Uniterms.Models
         public override AlgorithmicAlgebraObject Right { get => _right; set => _right = value; }
         public override string Separator { get => _separator; set => _separator = value; }
 
+        public string Name { get => ToString(); }
+
         public ParallelOperation(AlgorithmicAlgebraObject left, AlgorithmicAlgebraObject right, string separator)
         {
             Left = left;
@@ -27,6 +29,11 @@ namespace Uniterms.Models
             Left = parallel.Left;
             Right = parallel.Right;
             Separator = parallel.Separator;
+        }
+
+        public override string ToString()
+        {
+            return _left.ToString() + " " + _separator + _right.ToString();
         }
     }
 }
