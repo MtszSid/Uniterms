@@ -24,9 +24,10 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="Unitermy" x:Name="PaneHeader" Style="{StaticResource BaseTextBlockStyle}"/>
                 <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,24,0,0">
-                    <Button Content="Button" Click="AddParallelOperation_Click" Margin="0,0,0,0"/>
-                    <TextBlock Text="{Binding Parallel.Name}" Margin="0,16,0,0" Name="ParallelText"/>
-                    
+                    <Button Content="Dodaj" Click="AddParallelOperation_Click" Margin="0,0,0,12"/>
+                    <Button Content="Dodaj" Click="AddSequenceOperation_Click" Margin="0,0,0,12"/>
+                    <Button Content="Zamiana" Click="SubstituteOperation_Click" Margin="0,0,0,12"/>
+                    <TextBlock Text="{Binding Parallel}" />
                 </StackPanel>
             </Grid>
         </SplitView.Pane>
@@ -38,8 +39,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-            <local:DrawOperation Grid.Row="1" Name="OperationDraw" AlgebraicOperation="{Binding Parallel}"/>
-            <local:DrawOperation Grid.Row="2" Name="OperationDraw2" AlgebraicOperation="{Binding Parallel}"/>
+            <local:DrawOperation Grid.Row="1" Name="OperationDraw" AlgebraicOperation="{Binding Parallel, Mode=TwoWay}"/>
+            <local:DrawOperation Grid.Row="2" Name="OperationDraw2" AlgebraicOperation="{Binding Sequence, Mode=TwoWay}"/>
         </Grid>
     </SplitView>
 </Page>

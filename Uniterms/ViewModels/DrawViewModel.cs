@@ -1,14 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using System.ComponentModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Uniterms.Models;
-using Uniterms.Views;
-using Windows.Services.Maps;
 
 namespace Uniterms.ViewModels
 {
@@ -20,21 +12,30 @@ namespace Uniterms.ViewModels
         private ParallelOperation _mementoParallel;
 
         public SequenceOperation Sequence
-        { 
-            get => _sequence;  
-            set { 
+        {
+            get => _sequence;
+            set
+            {
                 SetProperty(ref _sequence, value);
-                MementoSequence = new SequenceOperation(_sequence);
-
-            } 
+            }
         }
         public ParallelOperation Parallel
         {
             get => _parallel;
             set
             {
-                SetProperty(ref _parallel, value);
-                MementoParallel = new ParallelOperation(_parallel);
+                if (_parallel != value)
+                {
+                    if(_parallel is not null)
+                    {
+                        _parallel.PropertyChanged -= Parallel_PropertyChanged;
+                    }
+                    SetProperty(ref _parallel, value);
+                    if (_parallel is not null)
+                    {
+                        _parallel.PropertyChanged += Parallel_PropertyChanged;
+                    }
+                }
             }
         }
 
@@ -50,52 +51,51 @@ namespace Uniterms.ViewModels
             set => SetProperty(ref _mementoParallel, value);
         }
 
-        //public static readonly DependencyProperty ParallelProperty =
-        //    DependencyProperty.Register(
-        //        nameof(Parallel),
-        //        typeof(ParallelOperation),
-        //        typeof(DrawViewModel),
-        //        new PropertyMetadata(null, OnOperationChanged));
-
-
         public void SetLeftOfParallel()
         {
-            
-            if(Parallel is null)
+
+            if (MementoSequence is null || Parallel is null)
             {
                 return;
             }
-            if(Parallel.Left is Uniterm)
-            {
-                Parallel.Left = _sequence;
-                Parallel.Right = _mementoParallel.Right;
-                OnPropertyChanged(nameof(Parallel));
-            }
+
+            Parallel.Left = MementoSequence;
+            Parallel.Right = MementoParallel.Right;
+            Sequence = null;
+            
         }
 
         public void SetRightOfParallel()
         {
 
-            if (Parallel is null)
+            if (MementoSequence is null || Parallel is null)
             {
                 return;
             }
-            if (Parallel.Left is Uniterm)
-            {
-                Parallel.Left = _mementoParallel.Left;
-                Parallel.Right = _mementoParallel.Right;
-                OnPropertyChanged(nameof(Parallel));
-            }
+
+            Parallel.Left = MementoParallel.Left;
+            Parallel.Right = MementoSequence;
+            Sequence = null;
+            
         }
 
         public void NewParallel(string left, string right, string separator)
         {
             Parallel = new ParallelOperation(new Uniterm(left), new Uniterm(right), separator);
+            MementoParallel = new ParallelOperation(new Uniterm(left), new Uniterm(right), separator);
+            Sequence = MementoSequence;
         }
 
         public void NewSequence(string left, string right, string separator)
         {
             Sequence = new SequenceOperation(new Uniterm(left), new Uniterm(right), separator);
+            MementoSequence = new SequenceOperation(new Uniterm(left), new Uniterm(right), separator);
+            Parallel = new ParallelOperation(MementoParallel);
+        }
+
+        private void Parallel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(Parallel));
         }
     }
 }

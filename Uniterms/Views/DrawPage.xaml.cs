@@ -29,8 +29,6 @@ namespace Uniterms.Views
         {
             ViewModel = new DrawViewModel();
             this.InitializeComponent();
-            ViewModel.Parallel = new ParallelOperation(new SequenceOperation(new Uniterm("A"), new Uniterm("B"), ";"), new Uniterm("B"), ",");
-
         }
 
         private async void AddParallelOperation_Click(object sender, RoutedEventArgs e)
@@ -44,21 +42,56 @@ namespace Uniterms.Views
                 ViewModel.NewParallel(content.Left, content.Right, content.Separator);
             }
         }
+        
+        private async void AddSequenceOperation_Click(object sender, RoutedEventArgs e)
+        {
+            var content = new SequenceOperationContent();
 
+            var result = await NewDalog("Dodaj operację sekwencjonowania.", content);
+
+            if (result is ContentDialogResult.Primary)
+            {
+                ViewModel.NewSequence(content.Left, content.Right, content.Separator);
+            }
+        }
         private async Task<ContentDialogResult> NewDalog(string title, object content)
         {
             ContentDialog dialog = new ContentDialog();
 
-            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             dialog.XamlRoot = this.XamlRoot;
-            //dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.Title = "Dodaj operację zrównoleglania.";
+            dialog.Title = title;
             dialog.PrimaryButtonText = "Dodaj";
             dialog.CloseButtonText = "Anuluj";
             dialog.DefaultButton = ContentDialogButton.Primary;
             dialog.Content = content;
 
             return await dialog.ShowAsync();
+        }
+
+        private async void SubstituteOperation_Click(object sender, RoutedEventArgs e)
+        {
+            var content = new SubstitutionPanel();
+
+            ContentDialog dialog = new ContentDialog();
+
+            dialog.XamlRoot = this.XamlRoot;
+            dialog.Title = "Zamiana unitermu.";
+            dialog.PrimaryButtonText = "Lewy";
+            dialog.SecondaryButtonText = "Prawy";
+            dialog.CloseButtonText = "Anuluj";
+            dialog.DefaultButton = ContentDialogButton.Close;
+            dialog.Content = content;
+
+            var result = await dialog.ShowAsync();
+
+            if (result is ContentDialogResult.Primary)
+            {
+                ViewModel.SetLeftOfParallel();
+            }
+            else if (result is ContentDialogResult.Secondary)
+            {
+                ViewModel.SetRightOfParallel();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Page
-    x:Class="Uniterms.Views.ParallelOperationContent"
+    x:Class="Uniterms.Views.SequenceOperationContent"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Uniterms.Views"
@@ -11,7 +11,7 @@
 
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" >
-        <TextBlock Text="Wprowadź unitermy dla poziomej operacji zrównoleglania." Margin="0,0,0,24"/>
+        <TextBlock Text="Wprowadź unitermy dla poziomej operacji sekwencjonowania." Margin="0,0,0,24"/>
         <TextBlock Text="Lewy uniterm:" Margin="0,0,0,16" />
         <TextBox Text="" Name="LeftUniterm"  Margin="0,0,0,16"/>
         <TextBlock Text="Prawy uniterm:" Margin="0,0,0,16" />

@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using System;
-using System.CodeDom;
+using System.ComponentModel;
 using Uniterms.Models;
 using Windows.Foundation;
 // To learn more about WinUI, the WinUI project structure,
@@ -19,8 +19,8 @@ namespace Uniterms.Views
             set => SetValue(UnitermsProperty, value);
         }
 
-        private static readonly double horizontalOffset = 5;
-        private static readonly double verticalOffset = 8;
+        private static readonly double horizontalOffset = 8;
+        private static readonly double verticalOffset = 10;
         private static readonly double margin = 1;
 
         private int _strokeThickness = 2;
@@ -38,13 +38,35 @@ namespace Uniterms.Views
             this.InitializeComponent();
         }
 
+        private void Person_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
+            Container.Children.Clear();
+            if (AlgebraicOperation is not null)
+            {
+                DrawGraph(AlgebraicOperation, 20, 20);
+            }
+        }
 
         private static void OnOperationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is DrawOperation control && e.NewValue is Operation operation)
+            if (d is DrawOperation control)
             {
-                control.DrawGraph(operation, 20, 20);
+                if (e.NewValue is Operation operation)
+                {
+                    operation.PropertyChanged += control.Person_PropertyChanged;
+                }
+
+                else if (e.NewValue is null && control.AlgebraicOperation is not null)
+                    control.AlgebraicOperation.PropertyChanged -= control.Person_PropertyChanged;
+
+                control.UpdateUI();
             }
+
         }
 
         private (double, double) DrawGraph(Operation operation, double x, double y)
@@ -52,7 +74,6 @@ namespace Uniterms.Views
             (double, double) left;
             (double, double) separator;
             (double, double) right;
-            Container.Children.Clear();
             if (operation.Left is Uniterm)
                 left = DrawUniterm((operation.Left as Uniterm).Name, x, y + verticalOffset);
             else
@@ -159,26 +180,25 @@ namespace Uniterms.Views
             var pathGeometry = new PathGeometry();
             PathFigure pathFigure = new PathFigure
             {
-                StartPoint = new Windows.Foundation.Point(x1, y + verticalOffset) 
+                StartPoint = new Windows.Foundation.Point(x1, y + verticalOffset)
             };
 
-            var delta = (x2 - x1) / 3;
-            var delta2 = (double)Math.Sqrt(x2-x1) + 2;
+            var delta = (x2 - x1) / 4;
+            var delta2 = (double)Math.Sqrt(x2 - x1) + 1;
 
             BezierSegment bezierSegment = new BezierSegment
             {
-                Point1 = new Windows.Foundation.Point(x1 + delta, y - delta2), 
-                Point2 = new Windows.Foundation.Point(x2 - delta, y - delta2), 
-                Point3 = new Windows.Foundation.Point(x2, y + verticalOffset)  
+                Point1 = new Windows.Foundation.Point(x1 + delta, y - delta2),
+                Point2 = new Windows.Foundation.Point(x2 - delta, y - delta2),
+                Point3 = new Windows.Foundation.Point(x2, y + verticalOffset)
             };
 
             pathFigure.Segments.Add(bezierSegment);
             pathGeometry.Figures.Add(pathFigure);
 
             line.Data = pathGeometry;
-            
+
             Container.Children.Add(line);
         }
     }
 }
-

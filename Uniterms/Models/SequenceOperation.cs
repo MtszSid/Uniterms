@@ -12,9 +12,32 @@ namespace Uniterms.Models
         private AlgorithmicAlgebraObject _right;
         private string _separator;
 
-        public override AlgorithmicAlgebraObject Left { get => _left; set => _left = value; }
-        public override AlgorithmicAlgebraObject Right { get => _right; set => _right = value;}
-        public override string Separator { get => _separator; set => _separator = value; }
+        public override AlgorithmicAlgebraObject Left
+        {
+            get => _left; set
+            {
+                _left = value;
+                OnPropertyChanged();
+            }
+        }
+        public override AlgorithmicAlgebraObject Right
+        {
+            get => _right;
+            set
+            {
+                _right = value;
+                OnPropertyChanged();
+            }
+        }
+        public override string Separator
+        {
+            get => _separator;
+            set
+            {
+                _separator = value;
+                OnPropertyChanged();
+            }
+        }
 
         public SequenceOperation(AlgorithmicAlgebraObject left, AlgorithmicAlgebraObject right, string separator)
         {
