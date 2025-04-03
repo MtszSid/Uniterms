@@ -52,5 +52,10 @@ namespace Uniterms.Models
             Right = other.Right;
             Separator = other.Separator;
         }
+
+        public override string ToString()
+        {
+            return _left.ToString() + " " + _separator + " " + _right.ToString();
+        }
     }
 }

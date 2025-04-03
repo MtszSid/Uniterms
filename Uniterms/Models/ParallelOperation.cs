@@ -56,7 +56,7 @@ namespace Uniterms.Models
 
         public override string ToString()
         {
-            return _left.ToString() + " " + _separator + _right.ToString();
+            return _left.ToString() + " " + _separator + " " + _right.ToString();
         }
     }
 }

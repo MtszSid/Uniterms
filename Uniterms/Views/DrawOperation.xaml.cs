@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using Uniterms.Models;
 using Windows.Foundation;
+using Windows.UI;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -34,7 +35,7 @@ namespace Uniterms.Views
                 new PropertyMetadata(null, OnOperationChanged));
 
         public DrawOperation()
-        {
+        {            
             this.InitializeComponent();
         }
 
@@ -115,7 +116,7 @@ namespace Uniterms.Views
             {
                 Text = uniterm,
                 FontSize = _fontSize,
-                Foreground = new SolidColorBrush(Microsoft.UI.Colors.White),
+                Foreground = Foreground,
                 Margin = new Thickness(2, 0, 2, 0)
             };
 
@@ -141,7 +142,7 @@ namespace Uniterms.Views
                 Y1 = y,
                 X2 = x2,
                 Y2 = y,
-                Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
+                Stroke = Foreground,    
                 StrokeThickness = _strokeThickness
             };
 
@@ -151,7 +152,7 @@ namespace Uniterms.Views
                 Y1 = y,
                 X2 = x1,
                 Y2 = y + verticalOffset,
-                Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
+                Stroke = Foreground,
                 StrokeThickness = _strokeThickness
             };
 
@@ -161,7 +162,7 @@ namespace Uniterms.Views
                 Y1 = y,
                 X2 = x2,
                 Y2 = y + verticalOffset,
-                Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
+                Stroke = Foreground,
                 StrokeThickness = _strokeThickness
             };
 
@@ -174,7 +175,7 @@ namespace Uniterms.Views
         {
             var line = new Path
             {
-                Stroke = new SolidColorBrush(Microsoft.UI.Colors.White),
+                Stroke = Foreground,
                 StrokeThickness = _strokeThickness
             };
             var pathGeometry = new PathGeometry();

@@ -22,16 +22,125 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Unitermy" x:Name="PaneHeader" Style="{StaticResource BaseTextBlockStyle}"/>
-                <StackPanel Orientation="Vertical" Grid.Row="1" Margin="0,24,0,0">
-                    <Button Content="Dodaj" Click="AddParallelOperation_Click" Margin="0,0,0,12"/>
-                    <Button Content="Dodaj" Click="AddSequenceOperation_Click" Margin="0,0,0,12"/>
-                    <Button Content="Zamiana" Click="SubstituteOperation_Click" Margin="0,0,0,12"/>
-                    <TextBlock Text="{Binding Parallel}" />
-                </StackPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock 
+                    Grid.Row="0" 
+                    Grid.Column ="0" 
+                    Text="Unitermy" 
+                    x:Name="PaneHeader" 
+                    Style="{StaticResource BaseTextBlockStyle}" 
+                    Margin="0,0,12,12"
+                    VerticalAlignment="Center"
+                    />
+
+                <Button 
+                    x:Name="InfoButton" 
+                    Grid.Row="0" 
+                    Grid.Column ="1" 
+                    Click="InfoButton_Click" 
+                    Margin="0,0,12,12"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                    <Button.Resources>
+                        <TeachingTip x:Name="InfoTip"
+                                     Target="{x:Bind InfoButton}"
+                                     Title="Informacje o programie"
+                                     PreferredPlacement="BottomLeft"
+                                     Subtitle="Program realizuje zamianę unitermu poziomej operacji zrównoleglania unitermów na poziomą operację sekwencjowania unitermów">
+
+                            <TeachingTip.IconSource>
+                                <FontIconSource Glyph="&#xEA1F;"  />
+                            </TeachingTip.IconSource>
+                            <StackPanel>
+                                <TextBlock Text="Autor: Mateusz Sidło" Margin="0,12,0,0"/>
+                            </StackPanel>
+                        </TeachingTip>
+                    </Button.Resources>
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE946;"/>
+                    </Button.Content>
+                </Button>
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,24,0,0" HorizontalAlignment="Stretch" Width="Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock 
+                        Grid.Row="0" 
+                        Grid.Column="0" 
+                        Text="Operacja zrównoleglania:"   
+                        Margin="0,0,12,12"  
+                        VerticalAlignment="Center"/>
+
+                    <Button 
+                        Grid.Row="0" 
+                        Grid.Column="1" 
+                        Content="Dodaj" 
+                        Click="AddParallelOperation_Click" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,0,12,12" />
+
+                    <TextBlock 
+                        Grid.Row="1" 
+                        Grid.Column="0" 
+                        Name="ParallelRep" 
+                        Text="{Binding MementoParallel}" 
+                        Visibility="Collapsed" 
+                        Margin="0,0,0,12" />
+
+                    <TextBlock 
+                        Grid.Row="2" 
+                        Grid.Column="0" 
+                        Text="Operacja zrównoleglania:" 
+                        Margin="0,0,12,12" 
+                        VerticalAlignment="Center"/>
+                    <Button 
+                        Grid.Row="2" 
+                        Grid.Column="1" 
+                        Content="Dodaj" 
+                        Click="AddSequenceOperation_Click" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,0,12,12" />
+
+                    <TextBlock 
+                        Grid.Row="3" 
+                        Grid.Column="0" 
+                        Name="SequenceRep" 
+                        Text="{Binding MementoSequence}" 
+                        Visibility="Collapsed" 
+                        Margin="0,0,0,12" />
+
+                    <TextBlock 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text="Zamiana unitermów:" 
+                        Margin="0,0,12,12" 
+                        VerticalAlignment="Center"/>
+                    <Button 
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Content="Zamiana" 
+                        Click="SubstituteOperation_Click" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,0,12,12"/>
+                </Grid>
             </Grid>
         </SplitView.Pane>
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -39,7 +148,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
-            <local:DrawOperation Grid.Row="1" Name="OperationDraw" AlgebraicOperation="{Binding Parallel, Mode=TwoWay}"/>
+            <local:DrawOperation Grid.Row="1" Name="OperationDraw" AlgebraicOperation="{Binding Parallel, Mode=TwoWay}" />
             <local:DrawOperation Grid.Row="2" Name="OperationDraw2" AlgebraicOperation="{Binding Sequence, Mode=TwoWay}"/>
         </Grid>
     </SplitView>

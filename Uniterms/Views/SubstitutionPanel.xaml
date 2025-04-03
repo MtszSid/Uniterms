@@ -10,6 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" >
-        <TextBlock Text="Wybór unitermu do zamiany." Margin="0,0,0,24"/>
+        <TextBlock Text="Wybór unitermu do zamiany." />
     </StackPanel>
 </Page>

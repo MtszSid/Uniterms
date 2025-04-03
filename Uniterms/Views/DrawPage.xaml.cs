@@ -40,6 +40,7 @@ namespace Uniterms.Views
             if (result is ContentDialogResult.Primary)
             {
                 ViewModel.NewParallel(content.Left, content.Right, content.Separator);
+                ParallelRep.Visibility = Visibility.Visible;
             }
         }
         
@@ -52,6 +53,7 @@ namespace Uniterms.Views
             if (result is ContentDialogResult.Primary)
             {
                 ViewModel.NewSequence(content.Left, content.Right, content.Separator);
+                SequenceRep.Visibility = Visibility.Visible;
             }
         }
         private async Task<ContentDialogResult> NewDalog(string title, object content)
@@ -92,6 +94,11 @@ namespace Uniterms.Views
             {
                 ViewModel.SetRightOfParallel();
             }
+        }
+
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
+        {
+            InfoTip.IsOpen = true;
         }
     }
 }
