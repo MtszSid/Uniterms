@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System;
 using Uniterms.Models;
 
 namespace Uniterms.ViewModels
@@ -10,6 +9,11 @@ namespace Uniterms.ViewModels
         private ParallelOperation _parallel;
         private SequenceOperation _mementoSequence;
         private ParallelOperation _mementoParallel;
+
+        private readonly string _parallelLeftKey = "ParallelLeft";
+        private readonly string _parallelRightKey = "ParallelRight";
+        private readonly string _sequenceLeftKey = "SequenceLeft";
+        private readonly string _sequenceRightKey = "SequenceRight";
 
         public SequenceOperation Sequence
         {
@@ -26,7 +30,7 @@ namespace Uniterms.ViewModels
             {
                 if (_parallel != value)
                 {
-                    if(_parallel is not null)
+                    if (_parallel is not null)
                     {
                         _parallel.PropertyChanged -= Parallel_PropertyChanged;
                     }
@@ -62,7 +66,7 @@ namespace Uniterms.ViewModels
             Parallel.Left = MementoSequence;
             Parallel.Right = MementoParallel.Right;
             Sequence = null;
-            
+
         }
 
         public void SetRightOfParallel()
@@ -76,20 +80,20 @@ namespace Uniterms.ViewModels
             Parallel.Left = MementoParallel.Left;
             Parallel.Right = MementoSequence;
             Sequence = null;
-            
+
         }
 
         public void NewParallel(string left, string right, string separator)
         {
-            Parallel = new ParallelOperation(new Uniterm("ParallelLeft", left), new Uniterm("ParallelRight", right), separator);
-            MementoParallel = new ParallelOperation(new Uniterm("MementoParallelLeft", left), new Uniterm("MementoParallelRight", right), separator);
+            Parallel = new ParallelOperation(new Uniterm(_parallelLeftKey, left), new Uniterm(_parallelRightKey, right), separator);
+            MementoParallel = new ParallelOperation(new Uniterm(_parallelLeftKey, left), new Uniterm(_parallelRightKey, right), separator);
             Sequence = MementoSequence;
         }
 
         public void NewSequence(string left, string right, string separator)
         {
-            Sequence = new SequenceOperation(new Uniterm("SequenceLeft", left), new Uniterm("SequenceRight", right), separator);
-            MementoSequence = new SequenceOperation(new Uniterm("MementoSequenceLeft", left), new Uniterm("MementoSequenceRight", right), separator);
+            Sequence = new SequenceOperation(new Uniterm(_sequenceLeftKey, left), new Uniterm(_sequenceRightKey, right), separator);
+            MementoSequence = new SequenceOperation(new Uniterm(_sequenceLeftKey, left), new Uniterm(_sequenceRightKey, right), separator);
             Parallel = new ParallelOperation(MementoParallel);
         }
 

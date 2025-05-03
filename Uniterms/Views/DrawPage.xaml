@@ -105,7 +105,7 @@
                     <TextBlock 
                         Grid.Row="2" 
                         Grid.Column="0" 
-                        Text="Operacja zrównoleglania:" 
+                        Text="Operacja sekwencjonowania:" 
                         Margin="0,0,12,12" 
                         VerticalAlignment="Center"/>
                     <Button 

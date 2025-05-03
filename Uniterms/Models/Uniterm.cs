@@ -32,6 +32,13 @@ namespace Uniterms.Models
             Value = value;
         }
 
+        public Uniterm(string name)
+        {
+            Name = name;
+            if(Value == null)
+                Value = "[null]";
+        }
+
         public override string ToString()
         {
             return Value;
