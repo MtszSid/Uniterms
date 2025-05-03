@@ -10,6 +10,8 @@ namespace Uniterms.ViewModels
         private SequenceOperation _mementoSequence;
         private ParallelOperation _mementoParallel;
 
+        private string _state;
+
         private readonly string _parallelLeftKey = "ParallelLeft";
         private readonly string _parallelRightKey = "ParallelRight";
         private readonly string _sequenceLeftKey = "SequenceLeft";
@@ -41,6 +43,12 @@ namespace Uniterms.ViewModels
                     }
                 }
             }
+        }
+
+        public string State
+        {
+            get => _state;
+            set => SetProperty(ref _state, value);
         }
 
         public SequenceOperation MementoSequence
@@ -85,6 +93,11 @@ namespace Uniterms.ViewModels
 
         public void NewParallel(string left, string right, string separator)
         {
+            if( string.IsNullOrEmpty(left) || string.IsNullOrEmpty(right))
+            {
+                State = "Unitermy dla operacji zrównoleglania nie mogą być puste.";
+                return;
+            }
             Parallel = new ParallelOperation(new Uniterm(_parallelLeftKey, left), new Uniterm(_parallelRightKey, right), separator);
             MementoParallel = new ParallelOperation(new Uniterm(_parallelLeftKey, left), new Uniterm(_parallelRightKey, right), separator);
             Sequence = MementoSequence;
@@ -92,9 +105,15 @@ namespace Uniterms.ViewModels
 
         public void NewSequence(string left, string right, string separator)
         {
+            if (string.IsNullOrEmpty(left) || string.IsNullOrEmpty(right))
+            {
+                State = "Unitermy dla operacji sekwencjonowania nie mogą być puste.";
+                return;
+            }
             Sequence = new SequenceOperation(new Uniterm(_sequenceLeftKey, left), new Uniterm(_sequenceRightKey, right), separator);
             MementoSequence = new SequenceOperation(new Uniterm(_sequenceLeftKey, left), new Uniterm(_sequenceRightKey, right), separator);
-            Parallel = new ParallelOperation(MementoParallel);
+            if(MementoParallel is not null)
+                Parallel = new ParallelOperation(MementoParallel);
         }
 
         private void Parallel_PropertyChanged(object sender, PropertyChangedEventArgs e)
