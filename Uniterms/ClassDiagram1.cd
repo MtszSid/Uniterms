@@ -92,7 +92,7 @@
   <Class Name="Uniterms.ViewModels.DrawViewModel">
     <Position X="1" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAARAAAIBAAAAIAIEAAAAAICQEEMQAAAAACEAAAA=</HashCode>
+      <HashCode>AAAAAARAAAIBAAAAIAIECAAAAICQEEMQAAAABCEAAAA=</HashCode>
       <FileName>ViewModels\DrawViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -142,6 +142,7 @@
       <HashCode>gAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.AppConfiguration">
     <Position X="13" Y="7.25" Width="1.5" />

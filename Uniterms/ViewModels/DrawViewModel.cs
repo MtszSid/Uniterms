@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using Uniterms.Models;
+using Uniterms.Services;
 
 namespace Uniterms.ViewModels
 {
@@ -14,8 +15,12 @@ namespace Uniterms.ViewModels
 
         private readonly string _parallelLeftKey = "ParallelLeft";
         private readonly string _parallelRightKey = "ParallelRight";
+        private readonly string _parallelSeparatorKey = "ParallelSeparator";
+
         private readonly string _sequenceLeftKey = "SequenceLeft";
         private readonly string _sequenceRightKey = "SequenceRight";
+        private readonly string _sequenceSeparatorKey = "SequenceSeparator";
+
 
         public SequenceOperation Sequence
         {
@@ -67,12 +72,10 @@ namespace Uniterms.ViewModels
         {
 
             if (MementoSequence is null || Parallel is null)
-            {
                 return;
-            }
 
             Parallel.Left = MementoSequence;
-            Parallel.Right = MementoParallel.Right;
+            Parallel.Right = OperationsService.RestoreUniterm(_parallelRightKey);
             Sequence = null;
 
         }
@@ -81,11 +84,9 @@ namespace Uniterms.ViewModels
         {
 
             if (MementoSequence is null || Parallel is null)
-            {
                 return;
-            }
 
-            Parallel.Left = MementoParallel.Left;
+            Parallel.Left = OperationsService.RestoreUniterm(_parallelLeftKey);
             Parallel.Right = MementoSequence;
             Sequence = null;
 
@@ -93,14 +94,14 @@ namespace Uniterms.ViewModels
 
         public void NewParallel(string left, string right, string separator)
         {
-            if( string.IsNullOrEmpty(left) || string.IsNullOrEmpty(right))
+            if (string.IsNullOrEmpty(left) || string.IsNullOrEmpty(right))
             {
                 State = "Unitermy dla operacji zrównoleglania nie mogą być puste.";
                 return;
             }
-            Parallel = new ParallelOperation(new Uniterm(_parallelLeftKey, left), new Uniterm(_parallelRightKey, right), separator);
-            MementoParallel = new ParallelOperation(new Uniterm(_parallelLeftKey, left), new Uniterm(_parallelRightKey, right), separator);
-            Sequence = MementoSequence;
+            Parallel = OperationsService.CreateParallel(_parallelLeftKey, left, _parallelRightKey, right, _parallelSeparatorKey, separator);
+            MementoParallel = OperationsService.RestoreParallel(_parallelLeftKey, _parallelRightKey, _parallelSeparatorKey);
+            Sequence = OperationsService.RestoreSequence(_sequenceLeftKey, _sequenceRightKey, _sequenceSeparatorKey);
         }
 
         public void NewSequence(string left, string right, string separator)
@@ -110,10 +111,9 @@ namespace Uniterms.ViewModels
                 State = "Unitermy dla operacji sekwencjonowania nie mogą być puste.";
                 return;
             }
-            Sequence = new SequenceOperation(new Uniterm(_sequenceLeftKey, left), new Uniterm(_sequenceRightKey, right), separator);
-            MementoSequence = new SequenceOperation(new Uniterm(_sequenceLeftKey, left), new Uniterm(_sequenceRightKey, right), separator);
-            if(MementoParallel is not null)
-                Parallel = new ParallelOperation(MementoParallel);
+            Sequence = OperationsService.CreateSequence(_sequenceLeftKey, left, _sequenceRightKey, right, _sequenceSeparatorKey, separator);
+            MementoSequence = OperationsService.RestoreSequence(_sequenceLeftKey, _sequenceRightKey, _sequenceSeparatorKey);
+            Parallel = OperationsService.RestoreParallel(_parallelLeftKey, _parallelRightKey, _parallelSeparatorKey);
         }
 
         private void Parallel_PropertyChanged(object sender, PropertyChangedEventArgs e)

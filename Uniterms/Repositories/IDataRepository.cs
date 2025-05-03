@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Uniterms.Services
+namespace Uniterms.Repositories
 {
     internal interface IDataRepository
     {

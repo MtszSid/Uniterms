@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Uniterms.DB;
+using Uniterms.Models;
 using Windows.System.UserProfile;
 
-namespace Uniterms.Services
+namespace Uniterms.Repositories
 {
     internal class DbRepostory : IDataRepository
     {
@@ -56,7 +57,7 @@ namespace Uniterms.Services
             using (var context = new AppDbContextFactory().CreateDbContext([]))
             {
                 var get = from i in context.Singleton select i;
-                foreach (var item in get) 
+                foreach (var item in get)
                 {
                     context.Singleton.Remove(item);
                 }
@@ -70,7 +71,7 @@ namespace Uniterms.Services
                 return false;
             using (var context = new AppDbContextFactory().CreateDbContext([]))
             {
-                var value = context.Singleton.Where(p =>  p.Key == key).SingleOrDefault();
+                var value = context.Singleton.Where(p => p.Key == key).SingleOrDefault();
                 context.Singleton.Remove(value);
                 var res = context.SaveChanges();
                 return res > 0;
@@ -84,7 +85,7 @@ namespace Uniterms.Services
             using (var context = new AppDbContextFactory().CreateDbContext([]))
             {
                 var value = context.Singleton.Where(p => p.Key == key).SingleOrDefault();
-                return value.Value;
+                return value?.Value;
             }
         }
     }

@@ -1,30 +1,19 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Uniterms.Services;
+using Uniterms.Repositories;
 
 namespace Uniterms.Models
 {
-    internal class Uniterm : AlgorithmicAlgebraObject
+    public class Uniterm : AlgorithmicAlgebraObject
     {
-        private string _name;
-
-        public string Name { get => _name; set => _name = value; }
-        public string Value
-        {
-            get
-            {
-                return App.Services.GetService<IDataRepository>().Get(Name);
-            }
-            set
-            {
-                App.Services.GetService<IDataRepository>().AddOrUpdate(Name, value);
-            }
-
-        }
+        
+        public string Name { get; set ; }
+        public string Value { get; set; }
 
         public Uniterm(string name, string value)
         {
@@ -32,12 +21,7 @@ namespace Uniterms.Models
             Value = value;
         }
 
-        public Uniterm(string name)
-        {
-            Name = name;
-            if(Value == null)
-                Value = "[null]";
-        }
+        public Uniterm() { }
 
         public override string ToString()
         {

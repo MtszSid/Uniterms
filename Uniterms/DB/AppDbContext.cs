@@ -13,14 +13,7 @@ namespace Uniterms.DB
 
         public AppDbContext(DbContextOptions options) : base(options) { }
 
-        // public AppDbContext() : base() { }
-
         public DbSet<Singleton> Singleton { get; set; }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseNpgsql("Host=localhost;Database=MASI;Username=postgres;Password=superpassword");
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
