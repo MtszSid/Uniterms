@@ -76,7 +76,7 @@ namespace Uniterms.Views
             (double, double) separator;
             (double, double) right;
             if (operation.Left is Uniterm)
-                left = DrawUniterm((operation.Left as Uniterm).Name, x, y + verticalOffset);
+                left = DrawUniterm((operation.Left as Uniterm).Value, x, y + verticalOffset);
             else
             {
                 left = DrawGraph(operation.Left as Operation, x, y + verticalOffset);
@@ -85,7 +85,7 @@ namespace Uniterms.Views
             separator = DrawUniterm(operation.Separator, left.Item1 + x + horizontalOffset, y + verticalOffset);
 
             if (operation.Right is Uniterm)
-                right = DrawUniterm((operation.Right as Uniterm).Name, left.Item1 + separator.Item1 + x + 2 * horizontalOffset, y + verticalOffset);
+                right = DrawUniterm((operation.Right as Uniterm).Value, left.Item1 + separator.Item1 + x + 2 * horizontalOffset, y + verticalOffset);
             else
                 right = DrawGraph(operation.Right as Operation, left.Item1 + separator.Item1 + x + 2 * horizontalOffset, y + verticalOffset);
 

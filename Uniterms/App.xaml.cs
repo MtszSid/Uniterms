@@ -17,6 +17,8 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Uniterms;
+using Microsoft.Extensions.DependencyInjection;
+using Uniterms.Services;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,6 +30,7 @@ namespace Uniterms
     /// </summary>
     public partial class App : Application
     {
+        public static IServiceProvider Services { get; private set; }
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -35,6 +38,10 @@ namespace Uniterms
         public App()
         {
             this.InitializeComponent();
+            var services = new ServiceCollection();
+            AppConfiguration.ConfigureServices(services);
+            Services = services.BuildServiceProvider();
+            Services.GetService<IDataRepository>().ClearData();
         }
 
         /// <summary>

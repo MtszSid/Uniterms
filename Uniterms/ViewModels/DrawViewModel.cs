@@ -81,15 +81,15 @@ namespace Uniterms.ViewModels
 
         public void NewParallel(string left, string right, string separator)
         {
-            Parallel = new ParallelOperation(new Uniterm(left), new Uniterm(right), separator);
-            MementoParallel = new ParallelOperation(new Uniterm(left), new Uniterm(right), separator);
+            Parallel = new ParallelOperation(new Uniterm("ParallelLeft", left), new Uniterm("ParallelRight", right), separator);
+            MementoParallel = new ParallelOperation(new Uniterm("MementoParallelLeft", left), new Uniterm("MementoParallelRight", right), separator);
             Sequence = MementoSequence;
         }
 
         public void NewSequence(string left, string right, string separator)
         {
-            Sequence = new SequenceOperation(new Uniterm(left), new Uniterm(right), separator);
-            MementoSequence = new SequenceOperation(new Uniterm(left), new Uniterm(right), separator);
+            Sequence = new SequenceOperation(new Uniterm("SequenceLeft", left), new Uniterm("SequenceRight", right), separator);
+            MementoSequence = new SequenceOperation(new Uniterm("MementoSequenceLeft", left), new Uniterm("MementoSequenceRight", right), separator);
             Parallel = new ParallelOperation(MementoParallel);
         }
 
