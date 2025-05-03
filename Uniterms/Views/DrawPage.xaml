@@ -15,6 +15,7 @@
 
     <SplitView x:Name="splitView" PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
            IsPaneOpen="True" OpenPaneLength="400" CompactPaneLength="48" DisplayMode="Inline">
+        
         <SplitView.Pane>
             <Grid Margin="36,12,0,0">
                 <Grid.RowDefinitions>
@@ -131,7 +132,9 @@
                         Margin="0,0,12,12" 
                         VerticalAlignment="Center"/>
                     <Button 
-                        Grid.Row="4" 
+                        Name="SubstituteButton"
+                        Grid.Row="4"
+                        IsEnabled="False"
                         Grid.Column="1" 
                         Content="Zamiana" 
                         Click="SubstituteOperation_Click" 
@@ -147,7 +150,14 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="SPLITVIEW CONTENT" Margin="12,12,0,0" Style="{StaticResource BaseTextBlockStyle}"/>
+            <InfoBar
+                Name="InfoBar"
+                Grid.Row="0"
+                IsOpen="False"
+                IsIconVisible="True"
+                IsClosable="True"
+                Title="Info"
+                Message="" />
             <local:DrawOperation Grid.Row="1" Name="OperationDraw" AlgebraicOperation="{Binding Parallel, Mode=TwoWay}" />
             <local:DrawOperation Grid.Row="2" Name="OperationDraw2" AlgebraicOperation="{Binding Sequence, Mode=TwoWay}"/>
         </Grid>

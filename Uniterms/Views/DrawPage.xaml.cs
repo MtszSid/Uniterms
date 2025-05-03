@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Uniterms.ViewModels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+using System;
 using System.Threading.Tasks;
-using Uniterms.Models;
+using Uniterms.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,23 +25,42 @@ namespace Uniterms.Views
 
             var result = await NewDalog("Dodaj operację zrównoleglania.", content);
 
-            if (result is ContentDialogResult.Primary)
+            if (result is ContentDialogResult.Primary && !string.IsNullOrEmpty(content.Left) && !string.IsNullOrEmpty(content.Right))
             {
                 ViewModel.NewParallel(content.Left, content.Right, content.Separator);
                 ParallelRep.Visibility = Visibility.Visible;
+                if (ViewModel.Sequence is not null)
+                {
+                    SubstituteButton.IsEnabled = true;
+
+                }
+            }
+            else if (result is ContentDialogResult.Primary && (string.IsNullOrEmpty(content.Left) || string.IsNullOrEmpty(content.Right)))
+            {
+                InfoBar.Message = "Wprowadzany uniterm nie może być pusty.";
+                InfoBar.IsOpen = true;
             }
         }
-        
+
         private async void AddSequenceOperation_Click(object sender, RoutedEventArgs e)
         {
             var content = new SequenceOperationContent();
 
             var result = await NewDalog("Dodaj operację sekwencjonowania.", content);
 
-            if (result is ContentDialogResult.Primary)
+            if (result is ContentDialogResult.Primary && !string.IsNullOrEmpty(content.Left) && !string.IsNullOrEmpty(content.Right))
             {
                 ViewModel.NewSequence(content.Left, content.Right, content.Separator);
                 SequenceRep.Visibility = Visibility.Visible;
+                if (ViewModel.Parallel is not null)
+                {
+                    SubstituteButton.IsEnabled = true;
+                }
+            }
+            else if (result is ContentDialogResult.Primary && (string.IsNullOrEmpty(content.Left) || string.IsNullOrEmpty(content.Right)))
+            {
+                InfoBar.Message = "Wprowadzany uniterm nie może być pusty.";
+                InfoBar.IsOpen = true;   
             }
         }
         private async Task<ContentDialogResult> NewDalog(string title, object content)
