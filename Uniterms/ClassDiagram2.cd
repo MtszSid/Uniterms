@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="Uniterms.DB.AppDbContext" Collapsed="true">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+  <Class Name="Uniterms.DB.AppDbContext">
+    <Position X="20.75" Y="10" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAAAA=</HashCode>
       <FileName>DB\AppDbContext.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Uniterms.DB.Singleton" Collapsed="true">
-    <Position X="13.5" Y="2.5" Width="1.5" />
+  <Class Name="Uniterms.DB.Singleton">
+    <Position X="20.75" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>DB\Singleton.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="AppDbContextFactory" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+  <Class Name="AppDbContextFactory" BaseTypeListCollapsed="true">
+    <Position X="20.75" Y="12.25" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DB\AppDbContextFactory.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.Migrations.InitialCreate" Collapsed="true">
-    <Position X="13.5" Y="1.5" Width="1.5" />
+  <Class Name="Uniterms.Migrations.InitialCreate">
+    <Position X="24" Y="11.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
       <FileName>Migrations\20250502124030_InitialCreate.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Uniterms.Migrations.AppDbContextModelSnapshot" Collapsed="true">
-    <Position X="8.25" Y="1.5" Width="1.5" />
+  <Class Name="Uniterms.Migrations.AppDbContextModelSnapshot">
+    <Position X="24" Y="10.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>Migrations\AppDbContextModelSnapshot.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Uniterms.Models.AlgorithmicAlgebraObject" Collapsed="true">
-    <Position X="3.25" Y="0.5" Width="1.5" />
+  <Class Name="Uniterms.Models.AlgorithmicAlgebraObject">
+    <Position X="4.25" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AlgorithmicAlgebraObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Uniterms.Models.Operation">
-    <Position X="2" Y="1.75" Width="1.5" />
+    <Position X="1.75" Y="1.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAABAACACAAAAAAAA=</HashCode>
       <FileName>Models\Operation.cs</FileName>
@@ -52,7 +52,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Models.ParallelOperation">
-    <Position X="1" Y="5" Width="1.5" />
+    <Position X="0.5" Y="5.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAABAAAAARgACACAAAAAAAA=</HashCode>
       <FileName>Models\ParallelOperation.cs</FileName>
@@ -60,21 +60,36 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Models.SequenceOperation">
-    <Position X="3.25" Y="5" Width="1.5" />
+    <Position X="4" Y="5.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAABAAAAARgACACAAAAAAAA=</HashCode>
       <FileName>Models\SequenceOperation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Uniterms.Models.Uniterm">
-    <Position X="5.5" Y="1.75" Width="1.5" />
+    <Position X="5.75" Y="1.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Models\Uniterm.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Uniterms.Repositories.DbRepostory" BaseTypeListCollapsed="true">
+    <Position X="17.25" Y="12.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAgBAAAAAAAAAAAEAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Repositories\DbRepostory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Uniterms.Services.OperationsService">
+    <Position X="12.5" Y="10" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAACAAAACAARAAAAAIAAA=</HashCode>
+      <FileName>Services\OperationsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Uniterms.ViewModels.BaseViewModel">
-    <Position X="5.75" Y="4.5" Width="1.5" />
+    <Position X="4" Y="11.25" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAEAAIEAAAABAgAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModels\BaseViewModel.cs</FileName>
@@ -82,69 +97,69 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.ViewModels.DrawViewModel">
-    <Position X="5.75" Y="8.25" Width="1.5" />
+    <Position X="8" Y="10" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAARAAAIBAAAAIAIECgAAAIiQEEMQAAAABCEAAAA=</HashCode>
       <FileName>ViewModels\DrawViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Uniterms.Views.DrawOperation" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="10" Y="1.5" Width="1.5" />
+  <Class Name="Uniterms.Views.DrawOperation" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="0.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAARAAESAACAACACAAAAAAABAQAAAAAAABAAAAQACgA=</HashCode>
       <FileName>Views\DrawOperation.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.Views.DrawPage" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="1.5" Width="1.5" />
+  <Class Name="Uniterms.Views.DrawPage" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="0.75" Width="3" />
     <TypeIdentifier>
       <HashCode>BAAABAAAAAAACCAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\DrawPage.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.Views.ParallelOperationContent" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="10" Y="2.5" Width="1.5" />
+  <Class Name="Uniterms.Views.ParallelOperationContent" BaseTypeListCollapsed="true">
+    <Position X="10" Y="3.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAABAACACAAAAAAAA=</HashCode>
       <FileName>Views\ParallelOperationContent.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.Views.SequenceOperationContent" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="2.5" Width="1.5" />
+  <Class Name="Uniterms.Views.SequenceOperationContent" BaseTypeListCollapsed="true">
+    <Position X="10" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAABAACACAAAAAAAA=</HashCode>
       <FileName>Views\SequenceOperationContent.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.Views.SubstitutionPanel" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="3.5" Width="1.5" />
+  <Class Name="Uniterms.Views.SubstitutionPanel" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\SubstitutionPanel.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.App" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+  <Class Name="Uniterms.App" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="0.75" Width="2" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Uniterms.AppConfiguration" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+  <Class Name="Uniterms.AppConfiguration">
+    <Position X="23.75" Y="3.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>AppConfiguration.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Uniterms.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.25" Y="2.5" Width="1.5" />
+  <Class Name="Uniterms.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="19" Y="0.75" Width="3.5" />
     <NestedTypes>
       <Enum Name="Uniterms.MainWindow.Monitor_DPI_Type" Collapsed="true">
         <TypeIdentifier>
@@ -156,10 +171,17 @@
       <HashCode>QAQAAAAAACQAAAAAAAAhBAAAEAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="UWPToWinAppSDKUpgradeHelpers.IDataTransferManagerInterop" Collapsed="true">
-    <Position X="8.25" Y="4.75" Width="1.5" />
+  <Interface Name="Uniterms.Repositories.IDataRepository">
+    <Position X="17.25" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAgBAAAAAAAAAAAEAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IDataRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UWPToWinAppSDKUpgradeHelpers.IDataTransferManagerInterop">
+    <Position X="24" Y="13.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>UWPToWinAppSDKUpgradeHelpers.cs</FileName>
