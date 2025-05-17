@@ -27,7 +27,18 @@ namespace Uniterms.ViewModels
             get => _sequence;
             set
             {
-                SetProperty(ref _sequence, value);
+                if (_sequence != value)
+                {
+                    if (_sequence is not null)
+                    {
+                        _sequence.PropertyChanged -= Sequence_PropertyChanged;
+                    }
+                    SetProperty(ref _sequence, value);
+                    if (_sequence is not null)
+                    {
+                        _sequence.PropertyChanged += Sequence_PropertyChanged;
+                    }
+                }
             }
         }
         public ParallelOperation Parallel
@@ -119,6 +130,11 @@ namespace Uniterms.ViewModels
         private void Parallel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnPropertyChanged(nameof(Parallel));
+        }
+
+        private void Sequence_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(Sequence));
         }
     }
 }
