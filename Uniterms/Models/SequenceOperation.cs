@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Uniterms.Models
 {
-    public class SequenceOperation : Operation
+    public partial class SequenceOperation : Operation, INotifyPropertyChanged
     {
         private AlgorithmicAlgebraObject _left;
         private AlgorithmicAlgebraObject _right;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Uniterms.Models
 {
-    public class ParallelOperation : Operation, INotifyPropertyChanged
+    public partial class ParallelOperation : Operation, INotifyPropertyChanged
     {
         private AlgorithmicAlgebraObject _left;
         private AlgorithmicAlgebraObject _right;
