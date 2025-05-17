@@ -39,7 +39,7 @@ namespace Uniterms.Views
             this.InitializeComponent();
         }
 
-        private void Person_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void Operation_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             UpdateUI();
         }
@@ -59,11 +59,11 @@ namespace Uniterms.Views
             {
                 if (e.NewValue is Operation operation)
                 {
-                    operation.PropertyChanged += control.Person_PropertyChanged;
+                    operation.PropertyChanged += control.Operation_PropertyChanged;
                 }
 
                 else if (e.NewValue is null && control.AlgebraicOperation is not null)
-                    control.AlgebraicOperation.PropertyChanged -= control.Person_PropertyChanged;
+                    control.AlgebraicOperation.PropertyChanged -= control.Operation_PropertyChanged;
 
                 control.UpdateUI();
             }
