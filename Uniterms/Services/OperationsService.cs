@@ -9,9 +9,9 @@ using Uniterms.Repositories;
 
 namespace Uniterms.Services
 {
-    public static class OperationsService
+    public class OperationsService : IOperationsService
     {
-        public static ParallelOperation CreateParallel(string leftUnitermKey, string leftUniterm, string rightUnitermKey, string rightUniterm, string separatorKey, string separator)
+        public ParallelOperation CreateParallel(string leftUnitermKey, string leftUniterm, string rightUnitermKey, string rightUniterm, string separatorKey, string separator)
         {
             var left = new Uniterm(leftUnitermKey, leftUniterm);
             var right = new Uniterm(rightUnitermKey, rightUniterm);
@@ -25,7 +25,7 @@ namespace Uniterms.Services
 
         }
 
-        public static  SequenceOperation CreateSequence(string leftUnitermKey, string leftUniterm, string rightUnitermKey, string rightUniterm, string separatorKey, string separator)
+        public  SequenceOperation CreateSequence(string leftUnitermKey, string leftUniterm, string rightUnitermKey, string rightUniterm, string separatorKey, string separator)
         {
             var left = new Uniterm(leftUnitermKey, leftUniterm);
             var right = new Uniterm(rightUnitermKey, rightUniterm);
@@ -38,7 +38,7 @@ namespace Uniterms.Services
             return new SequenceOperation(left, right, separator);
         }
 
-        public static ParallelOperation RestoreParallel(string leftUnitermKey, string rightUnitermKey, string separatorKey)
+        public ParallelOperation RestoreParallel(string leftUnitermKey, string rightUnitermKey, string separatorKey)
         {
             var left = RestoreUniterm(leftUnitermKey);
             var right = RestoreUniterm(rightUnitermKey);
@@ -50,7 +50,7 @@ namespace Uniterms.Services
             return new ParallelOperation(left, right, separator);
         }
 
-        public static SequenceOperation RestoreSequence(string leftUnitermKey, string rightUnitermKey, string separatorKey)
+        public SequenceOperation RestoreSequence(string leftUnitermKey, string rightUnitermKey, string separatorKey)
         {
             var left = RestoreUniterm(leftUnitermKey);
             var right = RestoreUniterm(rightUnitermKey);
@@ -62,7 +62,7 @@ namespace Uniterms.Services
             return new SequenceOperation(left, right, separator);
         }
 
-        public static Uniterm RestoreUniterm(string key)
+        public Uniterm RestoreUniterm(string key)
         {
             var repository = App.Services.GetService<IDataRepository>();
             var uniterm = repository.Get(key);
@@ -72,7 +72,7 @@ namespace Uniterms.Services
             return new Uniterm(key, uniterm);
         }
 
-        public static string RestoreSeparator(string key)
+        public string RestoreSeparator(string key)
         {
             var repository = App.Services.GetService<IDataRepository>();
             return repository.Get(key);

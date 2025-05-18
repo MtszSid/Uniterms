@@ -29,7 +29,7 @@
                 <SymbolIcon Symbol="Back" />
             </AppBarButton>
             <TextBlock x:Name="TitleTextBlock" 
-               Text="Photo Lab" 
+               Text="Uniterms" 
                Style="{StaticResource CaptionTextBlockStyle}"
                Grid.Column="2"
                VerticalAlignment="Center"

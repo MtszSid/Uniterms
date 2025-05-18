@@ -65,6 +65,7 @@
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAABAAAAARgACACAAAAAAAA=</HashCode>
       <FileName>Models\SequenceOperation.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Models.Uniterm">
     <Position X="5.75" Y="1.75" Width="2" />
@@ -82,11 +83,12 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Services.OperationsService">
-    <Position X="12.5" Y="10" Width="3" />
+    <Position X="12.5" Y="12.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAAACAAAACAARAAAAAIAAA=</HashCode>
       <FileName>Services\OperationsService.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.ViewModels.BaseViewModel">
     <Position X="4" Y="11.25" Width="3.5" />
@@ -99,25 +101,23 @@
   <Class Name="Uniterms.ViewModels.DrawViewModel">
     <Position X="8" Y="10" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAARAAAIBAAAAIAIECgAAAIiQEEMQAAAABCEAAAA=</HashCode>
+      <HashCode>AAAAAARAAAIBAAAAIAIMCgAAAIiQEEMQAAAABCEAAAA=</HashCode>
       <FileName>ViewModels\DrawViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Uniterms.Views.DrawOperation" BaseTypeListCollapsed="true">
-    <Position X="12.5" Y="0.75" Width="3" />
+    <Position X="16.25" Y="0.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAARAAESAACAACACAAAAAAABAQAAAAAAABAAAAQACgA=</HashCode>
+      <HashCode>AAARAAESAACAACACAAAAAAABAQQAAAAAABAAAAQACAA=</HashCode>
       <FileName>Views\DrawOperation.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Views.DrawPage" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="0.75" Width="3" />
+    <Position X="12.5" Y="5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>BAAABAAAAAAACCAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\DrawPage.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Views.ParallelOperationContent" BaseTypeListCollapsed="true">
     <Position X="10" Y="3.5" Width="2.25" />
@@ -125,7 +125,6 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAABAACACAAAAAAAA=</HashCode>
       <FileName>Views\ParallelOperationContent.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Views.SequenceOperationContent" BaseTypeListCollapsed="true">
     <Position X="10" Y="0.75" Width="2.25" />
@@ -133,15 +132,13 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAABAACACAAAAAAAA=</HashCode>
       <FileName>Views\SequenceOperationContent.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.Views.SubstitutionPanel" BaseTypeListCollapsed="true">
-    <Position X="15.75" Y="3.5" Width="1.75" />
+    <Position X="10" Y="6.25" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Views\SubstitutionPanel.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.App" BaseTypeListCollapsed="true">
     <Position X="23.75" Y="0.75" Width="2" />
@@ -149,7 +146,6 @@
       <HashCode>gAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Uniterms.AppConfiguration">
     <Position X="23.75" Y="3.75" Width="2" />
@@ -159,7 +155,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Uniterms.MainWindow" BaseTypeListCollapsed="true">
-    <Position X="19" Y="0.75" Width="3.5" />
+    <Position X="12.5" Y="0.75" Width="3.5" />
     <NestedTypes>
       <Enum Name="Uniterms.MainWindow.Monitor_DPI_Type" Collapsed="true">
         <TypeIdentifier>
@@ -171,7 +167,6 @@
       <HashCode>QAQAAAAAACQAAAAAAAAhBAAAEAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Uniterms.Repositories.IDataRepository">
     <Position X="17.25" Y="10" Width="1.75" />
@@ -181,10 +176,17 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="UWPToWinAppSDKUpgradeHelpers.IDataTransferManagerInterop">
-    <Position X="24" Y="13.5" Width="2.5" />
+    <Position X="28" Y="13.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>UWPToWinAppSDKUpgradeHelpers.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Uniterms.Services.IOperationsService">
+    <Position X="12.5" Y="10" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAACAAAACAARAAAAAIAAA=</HashCode>
+      <FileName>Services\IOperationsService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
