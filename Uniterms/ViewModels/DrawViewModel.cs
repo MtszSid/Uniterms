@@ -89,7 +89,7 @@ namespace Uniterms.ViewModels
 
             var service = App.Services.GetService<IOperationsService>();
 
-            Parallel.Left = MementoSequence;
+            Parallel.Left = service.RestoreSequence(_sequenceLeftKey, _sequenceRightKey, _sequenceSeparatorKey);
             Parallel.Right = service.RestoreUniterm(_parallelRightKey);
             Sequence = null;
 
@@ -104,7 +104,7 @@ namespace Uniterms.ViewModels
             var service = App.Services.GetService<IOperationsService>();
 
             Parallel.Left = service.RestoreUniterm(_parallelLeftKey);
-            Parallel.Right = MementoSequence;
+            Parallel.Right = service.RestoreSequence(_sequenceLeftKey, _sequenceRightKey, _sequenceSeparatorKey); 
             Sequence = null;
 
         }
